@@ -1,0 +1,31 @@
+{
+  "name": "nexthink",
+  "description": "test app",
+  "version": null,
+  "manifest_version": 2,
+  "icons": {
+    "48": "icons/icon_48.png",
+    "128": "icons/icon_128.png"
+  },
+  "browser_action": {
+    "default_title": "nexthink",
+    "default_popup": "popup/popup.html"
+  },
+  "web_accessible_resources": [
+    "mixins.css"
+  ],
+  "permissions": [
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking",
+    "activeTab",
+    "tabs",
+    "notifications",
+    "contextMenus"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  }
+}

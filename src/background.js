@@ -1,0 +1,1 @@
+global.browser = require('webextension-polyfill')/** * THis listener tracks all requests that happen and * send messages with request data to Extension */browser.webRequest.onBeforeRequest.addListener(listener => {  if (listener.initiator && !listener.initiator.includes('chrome-extension')) {    chrome.runtime.sendMessage(listener)  }}, { urls: ['<all_urls>'] })

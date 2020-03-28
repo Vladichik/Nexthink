@@ -1,0 +1,116 @@
+=setGrid($columns, $columns-gap, $rows, $rows-gap, $type)
+  display: grid
+  @if ($type == 'columns')
+    grid-template-columns: $columns
+    grid-column-gap: $columns-gap
+  @else if ($type == 'rows')
+    grid-template-rows: $rows
+    grid-row-gap: $rows-gap
+  @else if ($type == 'both')
+    grid-template-columns: $columns
+    grid-column-gap: $columns-gap
+    grid-template-rows: $rows
+    grid-row-gap: $rows-gap
+
+=setGridAuto($size, $gap, $type)
+  display: grid
+  @if ($type == "columns")
+    grid-auto-columns: $size
+    grid-template-columns: $size
+    grid-column-gap: $gap
+    grid-auto-flow: column
+  @else if ($type == "rows")
+    grid-auto-rows: $size
+    grid-template-rows: $size
+    grid-row-gap: $gap
+    grid-auto-flow: row
+
+=shadowGenerator($item)
+  -webkit-box-shadow: $item
+  -moz-box-shadow: $item
+  box-shadow: $item
+
+
+=ellipsis()
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+
+$very_dark_grey: #acacac
+$dark_grey: #dadada
+$main_blue: #3c9cff
+$main_red: #c70700
+
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder, .no-country-selector::-webkit-input-placeholder
+  color: $very_dark_grey !important
+
+input:-moz-placeholder, textarea:-moz-placeholder, .no-country-selector:-moz-placeholder
+  color: $very_dark_grey !important
+
+input::-moz-placeholder, textarea::-moz-placeholder, .no-country-selector::-moz-placeholder
+  color: $very_dark_grey !important
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder, .no-country-selector:-ms-input-placeholder
+  color: $very_dark_grey !important
+
+input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder, .no-country-selector:focus::-webkit-input-placeholder
+  color: transparent !important
+
+input:focus:-moz-placeholder, textarea:focus:-moz-placeholder, .no-country-selector:focus:-moz-placeholder
+  color: transparent !important
+
+input:focus::-moz-placeholder, textarea:focus::-moz-placeholder, .no-country-selector:focus::-moz-placeholder
+  color: transparent !important
+
+input:focus:-ms-input-placeholder, textarea:focus:-ms-input-placeholder, .no-country-selector:focus:-ms-input-placeholder
+  color: transparent !important
+
+::-webkit-scrollbar
+  width: 4px
+  background-color: #F5F5F5
+
+::-webkit-scrollbar-thumb
+  border-radius: 10px
+  background-color: #cdcdcd
+
+::-webkit-scrollbar-track
+  border-radius: 10px
+  background-color: #f5f5f5
+  background-clip: content-box
+
+ul
+  list-style: none
+  padding: 0
+  margin: 0
+
+button
+  display: flex
+  justify-content: center
+  align-items: center
+  cursor: pointer
+  outline: none
+  border: none
+  padding: 0 10px
+  height: 40px
+  color: white
+  -webkit-appearance: none
+  &.vi-small-padding
+    padding: 0 5px
+
+.ok-btn, .red-btn
+  text-transform: uppercase
+  +shadowGenerator(0 1px 3px 0 rgba(0,0,0,0.35))
+  &:active
+    +shadowGenerator(inset 0 0 5px 0 rgba(0,0,0,0.75))
+  &:disabled
+    background: $dark_grey
+    cursor: default
+    pointer-events: none
+
+.ok-btn
+  background: $main_blue
+
+.red-btn
+  background: $main_red
