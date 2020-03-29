@@ -23,19 +23,7 @@
       }
     },
     created () {
-      const self = this;
-      browser.runtime.onMessage.addListener(function (msg) {
-        msg.accepted = !self.ignored_urls.includes(msg.initiator);
-        self.requests_list.unshift(msg);
-        if (msg.accepted) {
-          axios.post('https://jsonplaceholder.typicode.com/posts', msg).then(resp => {
-            const foundRequest = self.requests_list.find(item => item.requestId === resp.data.requestId);
-            if (foundRequest) {
-              foundRequest.done = true;
-            }
-          })
-        }
-      });
+      this.initiateRequestsListener();
     },
     computed: {
       ...mapState(["ignored_urls"])
@@ -48,6 +36,36 @@
        */
       getRowStatus: (request) => {
         return !request.accepted ? "IGNORED" : request.accepted && request.done ? "SENT" : request.accepted ? "SENDING..." : "";
+      },
+
+      /**
+       * Function that initiates listener for browser http requests.
+       */
+      initiateRequestsListener() {
+        const self = this;
+        browser.runtime.onMessage.addListener(function (msg) {
+          msg.accepted = !self.ignored_urls.includes(msg.initiator);
+          const alreadyExists = self.requests_list.some(url => url.requestId === msg.requestId);
+          if (!alreadyExists) {
+            self.requests_list.unshift(msg);
+          }
+          self.sendRequestDataToServer(msg);
+        });
+      },
+
+      /**
+       * This part sends requst data to server
+       * @param msg - object that contains request data
+       */
+      sendRequestDataToServer(msg) {
+        if (msg.accepted) {
+          axios.post('https://jsonplaceholder.typicode.com/posts', msg).then(resp => {
+            const foundRequest = this.requests_list.find(item => item.requestId === resp.data.requestId);
+            if (foundRequest) {
+              foundRequest.done = true;
+            }
+          })
+        }
       }
     }
   }
