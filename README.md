@@ -19,6 +19,7 @@ _(chrome://extensions/ -> load unpacked -> select DIST folder)_
 2. Axios for http requests
 3. Server side - fake server side API (https://jsonplaceholder.typicode.com/) api that receives http requests and
 returns responses. 
+4. SASS syntax is used for styling.
 
 <br>
 <br>
@@ -34,7 +35,7 @@ browser bar and pasted in extension input field, pressing ADD will add only clea
 
 2. Adding/Removing url to/from ignore list will affect immediately the requests management.
 
-3. Request statuses in monitor section each request row may have one of 3 statuses: IGNORED/SENDING/SENT. If request initiator url exists in ignored list it will get status IGNORED and will not be sent to server. If request initiator url is not in ignored list, then request data will be sent to server, in this case the request row will get status SENDING... once the request returns a response from the server status will automatically change to SENT. 
+3. **Request statuses in monitor section:** each request row may have one of 3 statuses: IGNORED/SENDING/SENT. If request initiator url exists in ignored list it will get status IGNORED and will not be sent to server. If request initiator url is not in ignored list, the request data will be sent to server, in this case the request row will get status SENDING... once the request returns a response from the server status will automatically change to SENT. 
 
 
 ![Image of the project](src/icons/img.png)
