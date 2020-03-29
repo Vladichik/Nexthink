@@ -30,7 +30,7 @@ Application is split to two sections:
 
 ###### Some features explanation:
 1. Adding NEW url to ignore list takes only base url which means if dirty url with parameters has been copied from
-browser bar and pasted in extension input field, pressing ADD will add only clean base url to ignored list.
+browser bar and pasted in extension input field, pressing ADD will add only clean base url to ignored list. All added urls are stored in browser local storage and remove from there once url is deleted from ignored list.
 
 2. Adding/Removing url to/from ignore list will affect immediately the requests management.
 
