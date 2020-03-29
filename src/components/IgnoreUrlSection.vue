@@ -1,12 +1,10 @@
 <template>
     <aside class="ignore-section">
         <header>
-            <div>
-                <ValidationProvider v-slot="{errors}" rules="url" class="ignore-input">
-                    <input type="url" name="URL" placeholder="Add URL to ignore list" v-model="ignore_model">
-                    <span class="url-not-valid">{{ errors[0] }}</span>
-                    <button class="ok-btn" :disabled="!ignore_model.length" @click="updateUrlToIgnoreList(null, true)">Add</button>
-                </ValidationProvider>
+            <div class="ignore-input">
+                <input type="url" name="URL" placeholder="Paste URL you'd like to ignore" v-model="ignore_model">
+                <button class="ok-btn" :disabled="!ignore_model.length" @click="updateUrlToIgnoreList(null, true)">Add
+                </button>
             </div>
         </header>
         <h3>Ignored URLs:</h3>
@@ -20,25 +18,18 @@
 </template>
 
 <script>
-  import { ValidationProvider, extend } from 'vee-validate'
   import { mapMutations, mapState } from 'vuex'
 
-  extend('url', value => {
-    return value.match(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/)
-  })
   export default {
     name: 'IgnoreUrlSection',
-    components: {
-      ValidationProvider
-    },
     data () {
       return {
         ignore_model: '',
-        baseRegex: "^https?:\\/\\/[^#?\\/]+"
+        baseRegex: '^https?:\\/\\/[^#?\\/]+'
       }
     },
     computed: {
-      ...mapState(["ignored_urls"])
+      ...mapState(['ignored_urls'])
     },
     methods: {
       ...mapMutations(['updateIgnoredList']),
@@ -52,8 +43,8 @@
         this.updateIgnoredList({
           url: url ? url : this.ignore_model.match(this.baseRegex)[0],
           append: flag
-        });
-        flag ? this.ignore_model = "" : null;
+        })
+        flag ? this.ignore_model = '' : null
       }
     }
   }
@@ -98,13 +89,16 @@
     .ignored-urls-list
         overflow: auto
         padding: 0 10px 0 0
+
         li
             height: 40px
             border-bottom: solid 1px $dark_grey
             align-items: center
             +setGrid(1fr auto, 10px, null, null, "columns")
+
             .red-btn
                 height: 30px
+
         span
             color: $main_blue
             +ellipsis()
