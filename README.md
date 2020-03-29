@@ -37,4 +37,4 @@ browser bar and pasted in extension input field, pressing ADD will add only clea
 3. Request statuses in monitor section each request row may have one of 3 statuses: IGNORED/SENDING/SENT. If request initiator url exists in ignored list it will get status IGNORED and will not be sent to server. If request initiator url is not in ignored list, then request data will be sent to server, in this case the request row will get status SENDING... once the request returns a response from the server status will automatically change to SENT. 
 
 
-![Image of the project](src/icons/imgp.png)
+![Image of the project](src/icons/img.png)

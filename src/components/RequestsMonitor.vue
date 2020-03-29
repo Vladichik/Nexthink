@@ -66,7 +66,8 @@
             align-items: center
             background: lightgreen
             color: green
-            height: 25px
+            border-bottom: solid 1px #7dd67d
+            height: 30px
             +setGrid(1fr auto 80px, 5px, null, null, "columns")
             span
                 &:first-child
@@ -80,5 +81,6 @@
             &.ignored
                 background: #f0aaaf
                 color: red
+                border-bottom: solid 1px #e09a9f
 
 </style>
