@@ -54,7 +54,7 @@
     @import "../mixins"
     .ignore-section
         overflow: hidden
-        padding: 5px 0px 0 10px
+        padding: 5px 0 0 10px
         max-width: 340px
         +shadowGenerator(0px 2px 3px 0px rgba(0, 0, 0, 0.3))
         +setGrid(null, null, 50px auto 1fr, 5px, "rows")
