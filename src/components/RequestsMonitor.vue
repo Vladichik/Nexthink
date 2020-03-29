@@ -62,6 +62,7 @@
     .requests-lists
         overflow: auto
         li
+            padding: 0 0 0 5px
             align-items: center
             background: lightgreen
             color: green
