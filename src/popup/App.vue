@@ -35,10 +35,8 @@
         const tasks = [this.GetItem1, this.GetItem2]
         const allPromises = tasks.map(task => {
           return new Promise(resolve => {
-            task(function (result) {
-              resolve(result)
-            })
-          })
+            task(result => resolve(result));
+          });
         })
 
         Promise.all(allPromises)
